@@ -1,5 +1,5 @@
 package ovh.ruokki.history.model.change;
 
-public record Creation() {
+public record Creation(String property) {
     
 }

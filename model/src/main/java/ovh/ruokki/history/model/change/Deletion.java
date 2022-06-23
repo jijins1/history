@@ -1,5 +1,5 @@
 package ovh.ruokki.history.model.change;
 
-public record Deletion() {
+public record Deletion(String property, String value) {
     
 }

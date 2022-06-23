@@ -1,4 +1,7 @@
 package ovh.ruokki.history.model.compare;
 
-public  interface Comparator<T>{
+import ovh.ruokki.history.model.change.Event;
+
+public interface Comparator<T> {
+    Event compare(T before, T after);
 }

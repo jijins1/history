@@ -8,3 +8,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+dependencies{
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+}
+
+test { useJUnitPlatform() }
