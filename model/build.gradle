@@ -9,7 +9,8 @@ java {
 }
 
 dependencies{
-    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
-}
+    implementation 'com.google.code.gson:gson:2.9.0'
+    testImplementation 'org.slf4j:slf4j-reload4j:1.7.36'
+  }
 
 test { useJUnitPlatform() }

@@ -1,14 +1,13 @@
 package ovh.ruokki.history.model.compare.jackson;
 
+
+import com.google.gson.JsonElement;
+
 import ovh.ruokki.history.model.change.Event;
-import ovh.ruokki.history.model.compare.Comparator;
 
-public class JacksonComparator implements Comparator<Object> {
-
-    @Override
-    public Event compare(Object before, Object after) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+public interface JacksonComparator{
     
+    void compare(String property, JsonElement before, JsonElement after, Event event);
+    boolean canCompare(JsonElement before, JsonElement after);
+
 }
