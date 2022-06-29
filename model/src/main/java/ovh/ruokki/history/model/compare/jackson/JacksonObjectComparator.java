@@ -1,16 +1,12 @@
 package ovh.ruokki.history.model.compare.jackson;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 
 import lombok.extern.slf4j.Slf4j;
-import ovh.ruokki.history.model.change.Creation;
 import ovh.ruokki.history.model.change.Event;
 
 @Slf4j
@@ -38,7 +34,7 @@ public class JacksonObjectComparator implements JacksonComparator {
             JsonElement afterValue = afterJsonObject.get(key);
             if (valueBefore == null) {
                 log.debug("Deletion detected : property : {}", key);
-
+                jacksonElementComparator.compare(key, valueBefore, null, subEvent);
             } else {
                 log.debug("Change detected : property : {}", key);
 
@@ -51,22 +47,9 @@ public class JacksonObjectComparator implements JacksonComparator {
                 .stream()
                 .filter((entry) -> !usedProperty.contains(entry.getKey()))
                 .forEach((entry) -> {
-                    log.debug("Add detected : property : {}", entry.getKey());
-                    JsonElement valueEmpty;
 
-                    if (entry.getValue().isJsonPrimitive()) {
-                        valueEmpty = new JsonPrimitive("");
-                    } else {
-                        valueEmpty = new JsonObject();
-                    }
+                    jacksonElementComparator.compare(entry.getKey(), null, entry.getValue(), subEvent);
 
-                    jacksonElementComparator.compare(entry.getKey(), valueEmpty, entry.getValue(), subEvent);
-
-                    List<Creation> creations = subEvent.changes().stream()
-                            .map((change) -> new Creation(change.property(), change.after()))
-                            .collect(Collectors.toList());
-                    subEvent.changes().clear();
-                    subEvent.creations().addAll(creations);
                 });
 
     }

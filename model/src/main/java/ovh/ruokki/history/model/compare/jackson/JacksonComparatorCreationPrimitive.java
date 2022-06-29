@@ -13,7 +13,6 @@ public class JacksonComparatorCreationPrimitive implements JacksonComparator {
     public void compare(String property, JsonElement before, JsonElement after, Event event) {
         log.debug("Creation primitive property {}", property);
         event.creations().add(new Creation(property, after.getAsString()));
-
     }
 
     @Override
