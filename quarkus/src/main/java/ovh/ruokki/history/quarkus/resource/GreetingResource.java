@@ -1,4 +1,4 @@
-package org.acme;
+package ovh.ruokki.history.quarkus.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,4 +1,4 @@
-package org.acme;
+package ovh.ruokki.history.quarkus.resource;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
