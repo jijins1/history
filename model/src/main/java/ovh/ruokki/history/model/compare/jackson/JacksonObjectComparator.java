@@ -47,9 +47,7 @@ public class JacksonObjectComparator implements JacksonComparator {
                 .stream()
                 .filter((entry) -> !usedProperty.contains(entry.getKey()))
                 .forEach((entry) -> {
-
                     jacksonElementComparator.compare(entry.getKey(), null, entry.getValue(), subEvent);
-
                 });
 
     }

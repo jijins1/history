@@ -21,7 +21,7 @@ public class JacksonComparatorCreationObject implements JacksonComparator {
         after.getAsJsonObject().entrySet().forEach(entry -> {
             jacksonComparator.compare(entry.getKey(), null, entry.getValue(), subEvent);
         });
-        event.subEvents().add(event);
+        event.subEvents().add(subEvent);
 
     }
 

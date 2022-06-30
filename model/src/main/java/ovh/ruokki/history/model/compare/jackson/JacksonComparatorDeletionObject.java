@@ -21,7 +21,7 @@ public class JacksonComparatorDeletionObject implements JacksonComparator {
         before.getAsJsonObject().entrySet().forEach(entry -> {
             jacksonComparator.compare(entry.getKey(), entry.getValue(), null, subEvent);
         });
-        event.subEvents().add(event);
+        event.subEvents().add(subEvent);
     }
 
     @Override
