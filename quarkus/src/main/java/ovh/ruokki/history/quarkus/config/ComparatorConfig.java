@@ -8,6 +8,7 @@ import javax.enterprise.inject.Produces;
 import com.google.gson.JsonElement;
 
 import ovh.ruokki.history.model.compare.Comparator;
+import ovh.ruokki.history.model.compare.jackson.ComparatorJacksonString;
 import ovh.ruokki.history.model.compare.jackson.JacksonComparator;
 import ovh.ruokki.history.model.compare.jackson.JacksonComparatorCreationObject;
 import ovh.ruokki.history.model.compare.jackson.JacksonComparatorCreationPrimitive;
@@ -20,7 +21,7 @@ import ovh.ruokki.history.model.compare.jackson.JacksonPrimitiveComparator;
 @ApplicationScoped
 public class ComparatorConfig {
     @Produces
-    Comparator<JsonElement> comparator(){
+    Comparator<String> comparator() {
         ArrayList<JacksonComparator> jacksonComparators = new ArrayList<>();
         var jacksonComparator = new JacksonElementComparator(jacksonComparators);
 
@@ -31,6 +32,6 @@ public class ComparatorConfig {
         jacksonComparators.add(new JacksonComparatorDeletionObject(jacksonComparator));
         jacksonComparators.add(new JacksonComparatorDeletionPrimitive());
 
-        return jacksonComparator;
+        return new ComparatorJacksonString(jacksonComparator);
     }
 }
