@@ -9,4 +9,4 @@ pluginManagement {
     }
 }
 rootProject.name = 'history'
-include 'model', 'quarkus'
+include 'model', 'quarkus', 'persistence'

@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply from: 'jooq.gradle'
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jooq:jooq:3.17.2'
+
+
+    runtimeOnly 'com.h2database:h2:1.4.200'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'org.jooq', name: 'jooq', version: '3.13.4'
+        classpath group: 'org.jooq', name: 'jooq-meta', version: '3.13.4'
+        classpath group: 'org.jooq', name: 'jooq-codegen', version: '3.13.4'
+        classpath group: 'org.postgresql', name: 'postgresql', version: '42.2.16'
+      }
+}
